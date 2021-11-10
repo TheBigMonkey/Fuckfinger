@@ -1,22 +1,41 @@
 <head>
     <title>Follow the fuckfinger</title>
     <style>
-
+    #div{display: none;}
     </style>
 </head>
 <body>
+    <button onclick = "myFunction()" id="start">Start</button>
+    <div id="div">
     <button onclick = "correct(this.className)" class = "0" id="left">left</button>
     <button onclick = "correct(this.className)" class = "1 " id="straight">straight</button>
-    <button onclick = "correct(this.className)" class = "2" id="right">right</button>
+    <button onclick = "correct(this.className)" class = "2" id="right">right</button> 
+    </div>
+
 
     <script>
+        let count = 0
+        let miliseconds = 0
+        function myFunction() {
+            var x = document.getElementById("start");{
+            x.style.display = "none";
+            var s = document.getElementById("div");
+            s.style.display = "block";
+        }
+    }
+        let counter = setInterval (function() {miliseconds++}, 10)
         function correct(data) {
-            var number = Math.floor (Math.random ()*3)
-            if (Number(data) == number) {
-                
+            let number = Math.floor (Math.random ()*3)
+            if (count>9) {
+                alert ("Nice " + miliseconds)
+            
+            }else if (data == number) {
+                count++
+
             } else {
-                
+                alert ("Get good. Score: " + count)
             }
+            console.log(count, number, miliseconds)
         }
     </script>
 </body>
