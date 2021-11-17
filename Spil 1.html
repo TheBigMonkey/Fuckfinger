@@ -15,27 +15,27 @@
 
     <script>
         let count = 0
-        let miliseconds = 0
+        let milliseconds = 0
         function myFunction() {
             var x = document.getElementById("start");{
             x.style.display = "none";
             var s = document.getElementById("div");
             s.style.display = "block";
+            let counter = setInterval (function() {milliseconds++}, 10)
         }
     }
-        let counter = setInterval (function() {miliseconds++}, 10)
         function correct(data) {
             let number = Math.floor (Math.random ()*3)
-            if (count>9) {
-                alert ("Nice " + miliseconds)
+            if (count>8) {
+                alert ("Nice, it took " + milliseconds * 10 + " milliseconds. BUT CAN YOU DO IT FASTER???")
             
             }else if (data == number) {
                 count++
 
             } else {
-                alert ("Get good. Score: " + count)
+                alert ("Get good. Score: " + count + " correct. It took " + milliseconds * 10 + " milliseconds to get this far.")
             }
-            console.log(count, number, miliseconds)
+            console.log(count, number, milliseconds * 10)
         }
     </script>
 </body>
