@@ -1,74 +1,57 @@
-<head>
-    <title>Follow the fuckfinger</title>
-    <style>
-    #div{display: none;}
-    </style>
-</head>
-<body>
-    <button onclick = "myFunction()" id="start">Start</button>
-    <div id="div">
-    <button onclick = "correct(0)" id="left">left</button>
-    <button onclick = "correct(1)" id="straight">straight</button>
-    <button onclick = "correct(2)" id="right">right</button> 
-    </div>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <title>Follow the fuckfinger</title>
+    </head>
 
+    <style>
+        #div{display: none;}
+    </style>
+
+    <body>
+        <button onclick = "myFunction()" id="start">Start</button>
+        <div id="div"></div>
+    </body>
 
     <script>
         let number = 0
         let count = 0
         let milliseconds = 0
+
         function myFunction() {
-            var x = document.getElementById("start");{
+            var x = document.getElementById("start");
             x.style.display = "none";
             var s = document.getElementById("div");
             s.style.display = "block";
-            let counter = setInterval (function() {milliseconds++}, 10)
-            closed()
+            startGame() 
+            let counter = setInterval(function() {
+                milliseconds++
+            }, 10)
         }
-    }
-        function correct(data) {
-            if (count>8) {
-                alert ("Nice, it took " + milliseconds * 10 + " milliseconds. BUT CAN YOU DO IT FASTER???")
-            
-            }else if (data == number) {
-                count++
 
-            } else {
-                alert ("Get good, you got " + count + " correct. It took " + milliseconds * 10 + " milliseconds to get this far.")
+        function startGame() {
+            $('#div').html('')
+            let number = Math.floor(Math.random ()*3)
+            for(let i = 0; i < 3; i++) {
+                if (i != number) {
+                    $('#div').append('<img src="Dør3.png" onclick="correct('+ i +', ' + number + ')"/>')
+                } else {
+                    $('#div').append('<img src="Dør åben hvid med f.png" onclick="correct('+ i +', ' + number + ')"/>')
+                }
             }
             console.log(count, number, milliseconds * 10)
         }
-        function closed() {
-            number = Math.floor (Math.random ()*3)
 
-                var img = document.createElement('img');
-            img.src = "Dør" + doornumber + ".png" 
-            document.getElementById('div').appendChild(img);
-
-                var img = document.createElement('img');
-            img.src = "Dør" + doornumber + ".png" 
-            document.getElementById('div').appendChild(img);
-
-                var img = document.createElement('img');
-            img.src = "Dør" + doornumber + ".png"
-            document.getElementById('div').appendChild(img); 
-
-                var img = document.createElement('img');
-            img.src = "Dør" + doornumber + ".png"
-            document.getElementById('div').appendChild(img);
-
-                var img = document.createElement('img');
-            img.src = "Dør" + doornumber + ".png"
-            document.getElementById('div').appendChild(img);
-
-            for (let i = 0; i < 3; i++) {
-                doornumber = Math.floor (Math.random ()*3)
-                if (i == doornumber) {
-                    
-                } else {
-                    
-                }
+        function correct(data, number) {
+            if (count > 8) {
+                alert ("Nice, it took " + milliseconds * 10 + " milliseconds. BUT CAN YOU DO IT FASTER???")
+            
+            } else if (data == number) {
+                count++
+                startGame()
+            } else {
+                alert("Get good, you got " + count + " correct. It took " + milliseconds * 10 + " milliseconds to get this far.")
             }
         }
     </script>
-</body>
+</html>
